@@ -1,0 +1,23 @@
+
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+  </head>
+  <body>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        $(function () {       
+            var socket = io();
+            socket.on('send', function(msg){
+                console.log('Server:',msg);
+            });
+            setInterval(function(){
+                socket.emit('send', 'hi server');
+            }, 50);         
+        }); 
+    </script>
+  </body>
+</html>
